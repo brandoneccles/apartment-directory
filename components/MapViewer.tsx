@@ -84,17 +84,26 @@ export default function MapViewer({
   useEffect(() => {
     if (!svgRef.current) return;
 
-    const svg = svgRef.current;
-    const unitElements = svg.querySelectorAll('.unit');
+    const container = svgRef.current;
+    const svgElement = container.querySelector('svg');
+    if (!svgElement) return;
+
+    const unitElements = svgElement.querySelectorAll('.unit');
 
     const handleUnitClick = (e: Event) => {
+      e.stopPropagation(); // Prevent pan handler from interfering
       const element = e.target as SVGElement;
       const svgId = element.id;
+
+      console.log('Unit clicked:', svgId); // Debug log
 
       // Find unit by SVG ID
       const unit = units.find(u => u.svgId === svgId || u.id === svgId);
       if (unit) {
+        console.log('Found unit:', unit.unitNumber); // Debug log
         onUnitClick(unit);
+      } else {
+        console.log('No unit found for ID:', svgId); // Debug log
       }
     };
 
