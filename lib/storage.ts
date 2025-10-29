@@ -55,7 +55,7 @@ export async function loadHouseholdData(): Promise<HouseholdData> {
 
   // Load seed data as fallback
   try {
-    const response = await fetch('/data/households.json');
+    const response = await fetch('/households.json');
     if (!response.ok) {
       throw new Error('Failed to fetch seed data');
     }
