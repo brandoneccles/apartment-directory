@@ -7,7 +7,8 @@
 
 import { useState } from 'react';
 import { X, Edit2, Save, XCircle, Plus } from 'lucide-react';
-import type { Unit } from '@/types';
+import type { Unit, Person, Pet } from '@/types';
+import { generateId } from '@/lib/utils';
 import PersonCard from './PersonCard';
 import PetCard from './PetCard';
 import StatusBadgePicker from './StatusBadgePicker';
@@ -125,7 +126,15 @@ export default function UnitDrawer({ unit, onClose, onUpdate }: UnitDrawerProps)
               {isEditing && (
                 <button
                   onClick={() => {
-                    // Add new adult logic will be in PersonCard
+                    const newAdult: Person = {
+                      id: generateId('person'),
+                      name: '',
+                      role: undefined,
+                      birthday: undefined,
+                      instagram: undefined,
+                      avatar: 'user',
+                    };
+                    updateField('adults', [...currentUnit.adults, newAdult]);
                   }}
                   className="flex items-center gap-1 text-sm text-blue-400 hover:text-blue-300"
                 >
@@ -168,7 +177,15 @@ export default function UnitDrawer({ unit, onClose, onUpdate }: UnitDrawerProps)
               {isEditing && (
                 <button
                   onClick={() => {
-                    // Add new child logic
+                    const newChild: Person = {
+                      id: generateId('person'),
+                      name: '',
+                      role: 'child',
+                      birthday: undefined,
+                      instagram: undefined,
+                      avatar: 'star',
+                    };
+                    updateField('children', [...currentUnit.children, newChild]);
                   }}
                   className="flex items-center gap-1 text-sm text-blue-400 hover:text-blue-300"
                 >
@@ -211,7 +228,13 @@ export default function UnitDrawer({ unit, onClose, onUpdate }: UnitDrawerProps)
               {isEditing && (
                 <button
                   onClick={() => {
-                    // Add new pet logic
+                    const newPet: Pet = {
+                      id: generateId('pet'),
+                      type: 'dog',
+                      name: '',
+                      notes: undefined,
+                    };
+                    updateField('pets', [...currentUnit.pets, newPet]);
                   }}
                   className="flex items-center gap-1 text-sm text-blue-400 hover:text-blue-300"
                 >

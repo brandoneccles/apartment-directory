@@ -37,34 +37,6 @@ export default function StatusBadgePicker({
   if (isEditing) {
     return (
       <div className="space-y-4">
-        {/* Status Picker */}
-        <div>
-          <label className="block text-sm font-medium text-gray-300 mb-2">Status</label>
-          <div className="grid grid-cols-2 gap-2">
-            {STATUS_OPTIONS.map(option => (
-              <button
-                key={option.value}
-                onClick={() => onStatusChange(option.value)}
-                className={`
-                  px-4 py-3 rounded-lg border-2 text-sm font-medium transition-all
-                  ${
-                    status === option.value
-                      ? 'border-white bg-opacity-20'
-                      : 'border-gray-700 hover:border-gray-600'
-                  }
-                `}
-                style={{
-                  backgroundColor: status === option.value ? option.color + '40' : 'transparent',
-                  color: status === option.value ? option.color : '#9ca3af',
-                }}
-              >
-                {status === option.value && <Check className="w-4 h-4 inline mr-1" />}
-                {option.label}
-              </button>
-            ))}
-          </div>
-        </div>
-
         {/* Badge Picker */}
         <div>
           <label className="block text-sm font-medium text-gray-300 mb-2">Badges</label>
@@ -102,24 +74,13 @@ export default function StatusBadgePicker({
     );
   }
 
-  // View mode
+  // View mode - only show badges if there are any
+  if (badges.length === 0) {
+    return null;
+  }
+
   return (
     <div className="space-y-4">
-      {/* Status Display */}
-      <div>
-        <label className="block text-sm font-medium text-gray-400 mb-2">Status</label>
-        <div
-          className="inline-flex items-center px-4 py-2 rounded-lg text-sm font-medium"
-          style={{
-            backgroundColor: currentStatus?.color + '20',
-            color: currentStatus?.color,
-            border: `2px solid ${currentStatus?.color}40`,
-          }}
-        >
-          {currentStatus?.label || status}
-        </div>
-      </div>
-
       {/* Badges Display */}
       {badges.length > 0 && (
         <div>

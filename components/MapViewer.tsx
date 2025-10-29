@@ -80,7 +80,40 @@ export default function MapViewer({
     };
   }, [handlers]);
 
-  // Handle unit clicks and apply styling
+  // Handle unit clicks - attach once when SVG loads
+  useEffect(() => {
+    if (!svgRef.current) return;
+
+    const container = svgRef.current;
+    const svgElement = container.querySelector('svg');
+    if (!svgElement) return;
+
+    const handleUnitClick = (e: Event) => {
+      e.stopPropagation();
+      const element = e.target as SVGElement;
+      const svgId = element.id;
+
+      console.log('Unit clicked:', svgId);
+
+      // Find unit by SVG ID from current units
+      const unit = units.find(u => u.svgId === svgId || u.id === svgId);
+      if (unit) {
+        console.log('Found unit:', unit.unitNumber);
+        onUnitClick(unit);
+      } else {
+        console.log('No unit found for ID:', svgId);
+      }
+    };
+
+    // Attach to SVG element directly so it persists through transforms
+    svgElement.addEventListener('click', handleUnitClick);
+
+    return () => {
+      svgElement.removeEventListener('click', handleUnitClick);
+    };
+  }, [svgContent]); // Only re-attach when SVG content changes
+
+  // Apply styling separately (doesn't affect click handlers)
   useEffect(() => {
     if (!svgRef.current) return;
 
@@ -90,29 +123,6 @@ export default function MapViewer({
 
     const unitElements = svgElement.querySelectorAll('.unit');
 
-    const handleUnitClick = (e: Event) => {
-      e.stopPropagation(); // Prevent pan handler from interfering
-      const element = e.target as SVGElement;
-      const svgId = element.id;
-
-      console.log('Unit clicked:', svgId); // Debug log
-
-      // Find unit by SVG ID
-      const unit = units.find(u => u.svgId === svgId || u.id === svgId);
-      if (unit) {
-        console.log('Found unit:', unit.unitNumber); // Debug log
-        onUnitClick(unit);
-      } else {
-        console.log('No unit found for ID:', svgId); // Debug log
-      }
-    };
-
-    // Add click listeners
-    unitElements.forEach(el => {
-      el.addEventListener('click', handleUnitClick);
-    });
-
-    // Apply styling based on filters and selection
     unitElements.forEach(el => {
       const svgId = el.id;
       const unit = units.find(u => u.svgId === svgId || u.id === svgId);
@@ -143,13 +153,7 @@ export default function MapViewer({
         (el as SVGElement).style.opacity = '0.6';
       }
     });
-
-    return () => {
-      unitElements.forEach(el => {
-        el.removeEventListener('click', handleUnitClick);
-      });
-    };
-  }, [svgContent, units, selectedUnit, highlightedUnits, onUnitClick]);
+  }, [units, selectedUnit, highlightedUnits]);
 
   return (
     <div className="relative h-full w-full overflow-hidden bg-zinc-950">
