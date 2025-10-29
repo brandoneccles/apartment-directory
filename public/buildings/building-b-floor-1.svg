@@ -1,0 +1,52 @@
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Building B - Floor 1 -->
+  <defs>
+    <style>
+      .unit { fill: #1f2937; stroke: #374151; stroke-width: 2; cursor: pointer; transition: all 0.2s; }
+      .unit:hover { fill: #374151; }
+      .unit.selected { fill: #3b82f6; stroke: #60a5fa; }
+      .unit-label { fill: #9ca3af; font-family: sans-serif; font-size: 18px; text-anchor: middle; pointer-events: none; }
+      .hallway { fill: #111827; stroke: #374151; stroke-width: 1; }
+    </style>
+  </defs>
+
+  <!-- Hallway -->
+  <rect class="hallway" x="50" y="150" width="700" height="300" />
+
+  <!-- Unit B-101 -->
+  <rect class="unit" id="b-101" data-unit="101" x="70" y="170" width="150" height="120" />
+  <text class="unit-label" x="145" y="240">101</text>
+
+  <!-- Unit B-102 -->
+  <rect class="unit" id="b-102" data-unit="102" x="240" y="170" width="150" height="120" />
+  <text class="unit-label" x="315" y="240">102</text>
+
+  <!-- Unit B-103 -->
+  <rect class="unit" id="b-103" data-unit="103" x="410" y="170" width="150" height="120" />
+  <text class="unit-label" x="485" y="240">103</text>
+
+  <!-- Unit B-104 -->
+  <rect class="unit" id="b-104" data-unit="104" x="580" y="170" width="150" height="120" />
+  <text class="unit-label" x="655" y="240">104</text>
+
+  <!-- Unit B-105 -->
+  <rect class="unit" id="b-105" data-unit="105" x="70" y="310" width="150" height="120" />
+  <text class="unit-label" x="145" y="380">105</text>
+
+  <!-- Unit B-106 -->
+  <rect class="unit" id="b-106" data-unit="106" x="240" y="310" width="150" height="120" />
+  <text class="unit-label" x="315" y="380">106</text>
+
+  <!-- Unit B-107 -->
+  <rect class="unit" id="b-107" data-unit="107" x="410" y="310" width="150" height="120" />
+  <text class="unit-label" x="485" y="380">107</text>
+
+  <!-- Unit B-108 -->
+  <rect class="unit" id="b-108" data-unit="108" x="580" y="310" width="150" height="120" />
+  <text class="unit-label" x="655" y="380">108</text>
+
+  <!-- Floor label -->
+  <text x="400" y="100" style="fill: #6b7280; font-family: sans-serif; font-size: 24px; text-anchor: middle; font-weight: bold;">
+    Building B - Floor 1
+  </text>
+</svg>
