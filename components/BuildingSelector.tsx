@@ -14,8 +14,8 @@ interface BuildingSelectorProps {
   onFloorChange: (floor: FloorNumber) => void;
 }
 
-const BUILDINGS: BuildingId[] = ['A', 'B'];
-const FLOORS: FloorNumber[] = [1, 2, 3, 4];
+const BUILDINGS: BuildingId[] = ['G'];
+const FLOORS: FloorNumber[] = [3];
 
 export default function BuildingSelector({
   building,

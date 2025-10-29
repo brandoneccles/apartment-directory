@@ -16,8 +16,8 @@ import { unitMatchesFilters } from '@/lib/utils';
 
 export default function Home() {
   // View state
-  const [building, setBuilding] = useState<BuildingId>('A');
-  const [floor, setFloor] = useState<FloorNumber>(1);
+  const [building, setBuilding] = useState<BuildingId>('G');
+  const [floor, setFloor] = useState<FloorNumber>(3);
   const [selectedUnit, setSelectedUnit] = useState<Unit | null>(null);
 
   // Data state

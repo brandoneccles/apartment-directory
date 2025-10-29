@@ -2,8 +2,8 @@
  * Type definitions for the Apartment Directory application
  */
 
-export type BuildingId = 'A' | 'B';
-export type FloorNumber = 1 | 2 | 3 | 4;
+export type BuildingId = 'G';
+export type FloorNumber = 3;
 
 export interface Person {
   id: string;

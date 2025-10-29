@@ -3,149 +3,82 @@
   "lastUpdated": "2025-10-29T00:00:00.000Z",
   "units": [
     {
-      "id": "unit-a101",
-      "unitNumber": "101",
-      "building": "A",
-      "floor": 1,
-      "adults": [
-        {
-          "id": "person-1",
-          "name": "Sarah Johnson",
-          "role": "roommate",
-          "birthday": "1995-06-15",
-          "instagram": "@sarahj",
-          "avatar": "smile"
-        }
-      ],
-      "children": [],
-      "pets": [
-        {
-          "id": "pet-1",
-          "type": "dog",
-          "name": "Max",
-          "notes": "Golden retriever, very friendly"
-        }
-      ],
-      "notes": "Met at the mailboxes. Very friendly, loves hiking.",
-      "status": "friend",
-      "badges": ["dog-friendly", "helpful", "gym-buddy"],
-      "svgId": "a-101"
-    },
-    {
-      "id": "unit-a102",
-      "unitNumber": "102",
-      "building": "A",
-      "floor": 1,
+      "id": "unit-g301",
+      "unitNumber": "301",
+      "building": "G",
+      "floor": 3,
       "adults": [],
       "children": [],
       "pets": [],
       "notes": "",
       "status": "occupied",
       "badges": [],
-      "svgId": "a-102"
+      "svgId": "g-301"
     },
     {
-      "id": "unit-a201",
-      "unitNumber": "201",
-      "building": "A",
-      "floor": 2,
-      "adults": [
-        {
-          "id": "person-2",
-          "name": "Michael Chen",
-          "role": "dad",
-          "avatar": "user"
-        },
-        {
-          "id": "person-3",
-          "name": "Lisa Chen",
-          "role": "mom",
-          "avatar": "heart"
-        }
-      ],
-      "children": [
-        {
-          "id": "person-4",
-          "name": "Emily Chen",
-          "role": "child",
-          "birthday": "2018-03-20",
-          "avatar": "star"
-        }
-      ],
-      "pets": [
-        {
-          "id": "pet-2",
-          "type": "cat",
-          "name": "Whiskers",
-          "notes": "Indoor cat, orange tabby"
-        }
-      ],
-      "notes": "Family with one kid. Emily goes to the local elementary school.",
-      "status": "friendly",
-      "badges": ["has-kids", "cat-friendly", "quiet"],
-      "svgId": "a-201"
-    },
-    {
-      "id": "unit-b101",
-      "unitNumber": "101",
-      "building": "B",
-      "floor": 1,
-      "adults": [
-        {
-          "id": "person-5",
-          "name": "David Martinez",
-          "role": "roommate",
-          "instagram": "@davidm_music",
-          "avatar": "music"
-        }
-      ],
-      "children": [],
-      "pets": [],
-      "notes": "Musician, plays guitar. Sometimes has band practice.",
-      "status": "acquaintance",
-      "badges": ["noisy", "party"],
-      "svgId": "b-101"
-    },
-    {
-      "id": "unit-b102",
-      "unitNumber": "102",
-      "building": "B",
-      "floor": 1,
+      "id": "unit-g302",
+      "unitNumber": "302",
+      "building": "G",
+      "floor": 3,
       "adults": [],
       "children": [],
       "pets": [],
       "notes": "",
       "status": "occupied",
       "badges": [],
-      "svgId": "b-102"
+      "svgId": "g-302"
     },
     {
-      "id": "unit-b201",
-      "unitNumber": "201",
-      "building": "B",
-      "floor": 2,
-      "adults": [
-        {
-          "id": "person-6",
-          "name": "Jennifer Park",
-          "role": "roommate",
-          "birthday": "1992-11-08",
-          "avatar": "coffee"
-        }
-      ],
+      "id": "unit-g315",
+      "unitNumber": "315",
+      "building": "G",
+      "floor": 3,
+      "adults": [],
       "children": [],
-      "pets": [
-        {
-          "id": "pet-3",
-          "type": "dog",
-          "name": "Bella",
-          "notes": "Small terrier mix"
-        }
-      ],
-      "notes": "Works from home. Met her dog Bella at the park.",
-      "status": "friendly",
-      "badges": ["dog-friendly", "quiet"],
-      "svgId": "b-201"
+      "pets": [],
+      "notes": "",
+      "status": "occupied",
+      "badges": [],
+      "svgId": "g-315"
+    },
+    {
+      "id": "unit-g327",
+      "unitNumber": "327",
+      "building": "G",
+      "floor": 3,
+      "adults": [],
+      "children": [],
+      "pets": [],
+      "notes": "",
+      "status": "occupied",
+      "badges": [],
+      "svgId": "g-327"
+    },
+    {
+      "id": "unit-g369",
+      "unitNumber": "369",
+      "building": "G",
+      "floor": 3,
+      "adults": [],
+      "children": [],
+      "pets": [],
+      "notes": "",
+      "status": "occupied",
+      "badges": [],
+      "svgId": "g-369"
+    },
+    {
+      "id": "unit-g370",
+      "unitNumber": "370",
+      "building": "G",
+      "floor": 3,
+      "adults": [],
+      "children": [],
+      "pets": [],
+      "notes": "",
+      "status": "occupied",
+      "badges": [],
+      "svgId": "g-370"
     }
   ]
 }
