@@ -125,7 +125,10 @@ export default function UnitDrawer({ unit, onClose, onUpdate }: UnitDrawerProps)
               <h3 className="text-lg font-semibold text-white">Adults</h3>
               {isEditing && (
                 <button
-                  onClick={() => {
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    console.log('Add Adult clicked!', currentUnit.adults.length);
                     const newAdult: Person = {
                       id: generateId('person'),
                       name: '',
@@ -134,9 +137,11 @@ export default function UnitDrawer({ unit, onClose, onUpdate }: UnitDrawerProps)
                       instagram: undefined,
                       avatar: 'user',
                     };
+                    console.log('Creating new adult:', newAdult);
                     updateField('adults', [...currentUnit.adults, newAdult]);
+                    console.log('After updateField, adults:', currentUnit.adults.length);
                   }}
-                  className="flex items-center gap-1 text-sm text-blue-400 hover:text-blue-300"
+                  className="flex items-center gap-1 text-sm text-blue-400 hover:text-blue-300 cursor-pointer"
                 >
                   <Plus className="w-4 h-4" />
                   Add Adult
@@ -176,7 +181,10 @@ export default function UnitDrawer({ unit, onClose, onUpdate }: UnitDrawerProps)
               <h3 className="text-lg font-semibold text-white">Children</h3>
               {isEditing && (
                 <button
-                  onClick={() => {
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    console.log('Add Child clicked!');
                     const newChild: Person = {
                       id: generateId('person'),
                       name: '',
@@ -187,7 +195,7 @@ export default function UnitDrawer({ unit, onClose, onUpdate }: UnitDrawerProps)
                     };
                     updateField('children', [...currentUnit.children, newChild]);
                   }}
-                  className="flex items-center gap-1 text-sm text-blue-400 hover:text-blue-300"
+                  className="flex items-center gap-1 text-sm text-blue-400 hover:text-blue-300 cursor-pointer"
                 >
                   <Plus className="w-4 h-4" />
                   Add Child
@@ -227,7 +235,10 @@ export default function UnitDrawer({ unit, onClose, onUpdate }: UnitDrawerProps)
               <h3 className="text-lg font-semibold text-white">Pets</h3>
               {isEditing && (
                 <button
-                  onClick={() => {
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    console.log('Add Pet clicked!');
                     const newPet: Pet = {
                       id: generateId('pet'),
                       type: 'dog',
@@ -236,7 +247,7 @@ export default function UnitDrawer({ unit, onClose, onUpdate }: UnitDrawerProps)
                     };
                     updateField('pets', [...currentUnit.pets, newPet]);
                   }}
-                  className="flex items-center gap-1 text-sm text-blue-400 hover:text-blue-300"
+                  className="flex items-center gap-1 text-sm text-blue-400 hover:text-blue-300 cursor-pointer"
                 >
                   <Plus className="w-4 h-4" />
                   Add Pet

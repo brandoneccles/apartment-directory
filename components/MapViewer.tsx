@@ -5,7 +5,7 @@
  * Handles SVG rendering, pan/zoom, and unit selection
  */
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useCallback } from 'react';
 import { usePanZoom } from '@/lib/usePanZoom';
 import { ZoomIn, ZoomOut, Maximize2 } from 'lucide-react';
 import type { BuildingId, FloorNumber, Unit } from '@/types';
@@ -80,6 +80,15 @@ export default function MapViewer({
     };
   }, [handlers]);
 
+  // Store latest units and callback in refs so click handler always has fresh data
+  const unitsRef = useRef(units);
+  const onUnitClickRef = useRef(onUnitClick);
+
+  useEffect(() => {
+    unitsRef.current = units;
+    onUnitClickRef.current = onUnitClick;
+  }, [units, onUnitClick]);
+
   // Handle unit clicks - attach once when SVG loads
   useEffect(() => {
     if (!svgRef.current) return;
@@ -95,11 +104,11 @@ export default function MapViewer({
 
       console.log('Unit clicked:', svgId);
 
-      // Find unit by SVG ID from current units
-      const unit = units.find(u => u.svgId === svgId || u.id === svgId);
+      // Use ref to get fresh units data
+      const unit = unitsRef.current.find(u => u.svgId === svgId || u.id === svgId);
       if (unit) {
         console.log('Found unit:', unit.unitNumber);
-        onUnitClick(unit);
+        onUnitClickRef.current(unit);
       } else {
         console.log('No unit found for ID:', svgId);
       }
