@@ -9,7 +9,7 @@ import { useEffect, useRef, useState, useCallback } from 'react';
 import { usePanZoom } from '@/lib/usePanZoom';
 import { ZoomIn, ZoomOut, Maximize2 } from 'lucide-react';
 import type { BuildingId, FloorNumber, Unit } from '@/types';
-import { getStatusColor } from '@/lib/utils';
+import { isUnitMet } from '@/lib/utils';
 
 interface MapViewerProps {
   building: BuildingId;
@@ -159,16 +159,17 @@ export default function MapViewer({
       if (highlightedUnits.length > 0) {
         if (highlightedUnits.includes(unit.id)) {
           el.classList.add('highlighted');
-          // Color by status
-          (el as SVGElement).style.fill = getStatusColor(unit.status);
+          // Color by met status
+          const met = isUnitMet(unit);
+          (el as SVGElement).style.fill = met ? '#10b981' : '#6b7280';
         } else {
           el.classList.add('dimmed');
         }
       } else {
-        // Default subtle status coloring
-        const color = getStatusColor(unit.status);
-        (el as SVGElement).style.fill = color;
-        (el as SVGElement).style.opacity = '0.6';
+        // Default met/not-met coloring
+        const met = isUnitMet(unit);
+        (el as SVGElement).style.fill = met ? '#10b981' : '#6b7280';
+        (el as SVGElement).style.opacity = '0.5';
       }
     });
   }, [units, selectedUnit, highlightedUnits]);

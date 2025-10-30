@@ -15,7 +15,7 @@ interface BuildingSelectorProps {
 }
 
 const BUILDINGS: BuildingId[] = ['G'];
-const FLOORS: FloorNumber[] = [3];
+const FLOORS: FloorNumber[] = [1, 2, 3, 4];
 
 export default function BuildingSelector({
   building,

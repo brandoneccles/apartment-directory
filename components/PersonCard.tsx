@@ -33,9 +33,7 @@ export default function PersonCard({
   };
 
   const age = calculateAge(person.birthday);
-  const Icon = person.avatar
-    ? (Icons[person.avatar.charAt(0).toUpperCase() + person.avatar.slice(1).replace(/-(.)/g, (_, c) => c.toUpperCase()) as keyof typeof Icons] as any)
-    : Icons.User;
+  const avatarEmoji = person.avatar || '👤'; // Default to a generic person icon
 
   if (isEditing) {
     return (
@@ -52,16 +50,16 @@ export default function PersonCard({
               placeholder="Enter name"
             />
           </div>
-          <div className="w-24">
-            <label className="block text-xs text-gray-400 mb-1">Avatar</label>
+          <div className="w-32">
+            <label className="block text-xs text-gray-400 mb-1">Icon</label>
             <select
-              value={localPerson.avatar || 'user'}
+              value={localPerson.avatar || '👤'}
               onChange={e => handleFieldChange('avatar', e.target.value)}
               className="w-full px-2 py-2 bg-gray-900 border border-gray-700 rounded-lg text-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
-              {AVATAR_OPTIONS.map(icon => (
-                <option key={icon} value={icon}>
-                  {icon}
+              {AVATAR_OPTIONS.map(option => (
+                <option key={option.value} value={option.value}>
+                  {option.value} {option.label}
                 </option>
               ))}
             </select>
@@ -70,19 +68,14 @@ export default function PersonCard({
 
         {/* Role */}
         <div>
-          <label className="block text-xs text-gray-400 mb-1">Role</label>
-          <select
+          <label className="block text-xs text-gray-400 mb-1">Role / Relationship (optional)</label>
+          <input
+            type="text"
             value={localPerson.role || ''}
             onChange={e => handleFieldChange('role', e.target.value || undefined)}
+            placeholder="e.g., sister, mom, roommate, friend"
             className="w-full px-3 py-2 bg-gray-900 border border-gray-700 rounded-lg text-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-          >
-            <option value="">Select role...</option>
-            {ROLE_OPTIONS.map(role => (
-              <option key={role} value={role}>
-                {role.charAt(0).toUpperCase() + role.slice(1)}
-              </option>
-            ))}
-          </select>
+          />
         </div>
 
         {/* Birthday */}
@@ -125,8 +118,8 @@ export default function PersonCard({
     <div className="p-4 bg-gray-800/50 rounded-lg border border-gray-700/50">
       <div className="flex items-start gap-3">
         {/* Avatar */}
-        <div className="w-12 h-12 rounded-full bg-blue-600/20 flex items-center justify-center flex-shrink-0">
-          {Icon && <Icon className="w-6 h-6 text-blue-400" />}
+        <div className="w-12 h-12 rounded-full bg-blue-600/20 flex items-center justify-center flex-shrink-0 text-2xl">
+          {avatarEmoji}
         </div>
 
         {/* Info */}

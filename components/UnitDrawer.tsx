@@ -146,7 +146,7 @@ export default function UnitDrawer({ unit, onClose, onUpdate }: UnitDrawerProps)
                       role: undefined,
                       birthday: undefined,
                       instagram: undefined,
-                      avatar: 'user',
+                      avatar: '🧑', // Default to neutral adult
                     };
                     console.log('Creating new adult:', newAdult);
                     updateField('adults', [...currentUnit.adults, newAdult]);
@@ -202,7 +202,7 @@ export default function UnitDrawer({ unit, onClose, onUpdate }: UnitDrawerProps)
                       role: 'child',
                       birthday: undefined,
                       instagram: undefined,
-                      avatar: 'star',
+                      avatar: '🧒',
                     };
                     updateField('children', [...currentUnit.children, newChild]);
                   }}

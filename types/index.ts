@@ -3,15 +3,15 @@
  */
 
 export type BuildingId = 'G';
-export type FloorNumber = 3;
+export type FloorNumber = 1 | 2 | 3 | 4;
 
 export interface Person {
   id: string;
   name: string;
-  role?: string; // e.g., "mom", "dad", "grandma", "roommate"
+  role?: string; // e.g., "mom", "dad", "grandma", "roommate", "sister"
   birthday?: string; // ISO date string
   instagram?: string;
-  avatar?: string; // Icon identifier or URL
+  avatar?: string; // Emoji character representing demographic (e.g., '👨', '👩', '👶')
 }
 
 export interface Pet {
@@ -97,21 +97,18 @@ export const STATUS_OPTIONS: { value: UnitStatus; label: string; color: string }
   { value: 'avoid', label: 'Avoid', color: '#ef4444' },
 ];
 
-// Avatar options (using lucide-react icon names)
+// Avatar options (demographic icons using emojis)
 export const AVATAR_OPTIONS = [
-  'user',
-  'user-circle',
-  'smile',
-  'heart',
-  'star',
-  'crown',
-  'coffee',
-  'music',
-  'book',
-  'laptop',
-  'bike',
-  'plane',
-];
+  { value: '👨', label: 'Adult Male' },
+  { value: '👩', label: 'Adult Female' },
+  { value: '🧑', label: 'Adult (Neutral)' },
+  { value: '👴', label: 'Elderly Male' },
+  { value: '👵', label: 'Elderly Female' },
+  { value: '👦', label: 'Boy' },
+  { value: '👧', label: 'Girl' },
+  { value: '🧒', label: 'Child (Neutral)' },
+  { value: '👶', label: 'Baby' },
+] as const;
 
 // Role options
 export const ROLE_OPTIONS = [
