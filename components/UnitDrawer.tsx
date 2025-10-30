@@ -5,7 +5,7 @@
  * Displays household information with view/edit modes
  */
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { X, Edit2, Save, XCircle, Plus } from 'lucide-react';
 import type { Unit, Person, Pet } from '@/types';
 import { generateId } from '@/lib/utils';
@@ -22,6 +22,13 @@ interface UnitDrawerProps {
 export default function UnitDrawer({ unit, onClose, onUpdate }: UnitDrawerProps) {
   const [isEditing, setIsEditing] = useState(false);
   const [editedUnit, setEditedUnit] = useState<Unit | null>(null);
+
+  // Debug: Log when editedUnit changes
+  useEffect(() => {
+    if (editedUnit) {
+      console.log('editedUnit updated - adults:', editedUnit.adults.length, 'children:', editedUnit.children.length, 'pets:', editedUnit.pets.length);
+    }
+  }, [editedUnit]);
 
   if (!unit) return null;
 
@@ -46,9 +53,13 @@ export default function UnitDrawer({ unit, onClose, onUpdate }: UnitDrawerProps)
   };
 
   const updateField = <K extends keyof Unit>(field: K, value: Unit[K]) => {
-    if (editedUnit) {
-      setEditedUnit({ ...editedUnit, [field]: value });
-    }
+    console.log('updateField called with:', field, value);
+    setEditedUnit(prev => {
+      if (!prev) return prev;
+      const updated = { ...prev, [field]: value };
+      console.log('State updated, new value:', updated[field]);
+      return updated;
+    });
   };
 
   return (

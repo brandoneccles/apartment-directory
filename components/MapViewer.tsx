@@ -89,18 +89,24 @@ export default function MapViewer({
     onUnitClickRef.current = onUnitClick;
   }, [units, onUnitClick]);
 
-  // Handle unit clicks - attach once when SVG loads
+  // Handle unit clicks using event delegation (more robust for pan/zoom)
   useEffect(() => {
     if (!svgRef.current) return;
 
     const container = svgRef.current;
-    const svgElement = container.querySelector('svg');
-    if (!svgElement) return;
 
-    const handleUnitClick = (e: Event) => {
+    const handleClick = (e: MouseEvent) => {
+      const target = e.target as Element;
+
+      // Find the closest .unit element (handles clicks on nested elements)
+      const unitElement = target.closest('.unit') as SVGElement | null;
+      if (!unitElement) {
+        console.log('Click not on a unit element');
+        return;
+      }
+
       e.stopPropagation();
-      const element = e.target as SVGElement;
-      const svgId = element.id;
+      const svgId = unitElement.id;
 
       console.log('Unit clicked:', svgId);
 
@@ -111,14 +117,17 @@ export default function MapViewer({
         onUnitClickRef.current(unit);
       } else {
         console.log('No unit found for ID:', svgId);
+        console.log('Available units:', unitsRef.current.map(u => u.svgId || u.id));
       }
     };
 
-    // Attach to SVG element directly so it persists through transforms
-    svgElement.addEventListener('click', handleUnitClick);
+    // Attach single listener to container using event delegation
+    container.addEventListener('click', handleClick);
+    console.log('Click handler attached to container');
 
     return () => {
-      svgElement.removeEventListener('click', handleUnitClick);
+      container.removeEventListener('click', handleClick);
+      console.log('Click handler removed from container');
     };
   }, [svgContent]); // Only re-attach when SVG content changes
 
