@@ -33,6 +33,12 @@
       .cls-6 {
         letter-spacing: -.02em;
       }
+
+      /* App-specific styles */
+      .unit { fill: #1f2937; stroke: #374151; stroke-width: 2; cursor: pointer; transition: all 0.2s; }
+      .unit:hover { fill: #374151; }
+      .unit.selected { fill: #3b82f6; stroke: #60a5fa; }
+      .unit-label { fill: #9ca3af; font-family: sans-serif; font-size: 18px; text-anchor: middle; pointer-events: none; }
     </style>
   </defs>
   <polygon id="g-169" class="cls-4 unit" points="2832.18 161.22 2832.18 1.22 2893.51 1.22 2893.51 11.89 2971.73 11.89 2971.73 1.22 3058.84 1.22 3058.84 178.55 2977.07 178.55 2977.07 151.89 2949.05 151.89 2949.05 160.93 2832.18 161.22"/>

@@ -41,6 +41,12 @@
       .cls-8 {
         letter-spacing: 0em;
       }
+
+      /* App-specific styles */
+      .unit { fill: #1f2937; stroke: #374151; stroke-width: 2; cursor: pointer; transition: all 0.2s; }
+      .unit:hover { fill: #374151; }
+      .unit.selected { fill: #3b82f6; stroke: #60a5fa; }
+      .unit-label { fill: #9ca3af; font-family: sans-serif; font-size: 18px; text-anchor: middle; pointer-events: none; }
     </style>
   </defs>
   <rect class="cls-1" x="1735.14" y="1100.26" width="103.62" height="46.12" transform="translate(1317.69 -934.55) rotate(45)"/>
