@@ -24,6 +24,7 @@
         font-family: Inter-SemiBold, Inter;
         font-size: 26px;
         font-weight: 600;
+        fill: #9ca3af;
       }
 
       .cls-4 {
@@ -43,9 +44,9 @@
       }
 
       /* App-specific styles */
-      .unit { fill: #1f2937; stroke: #374151; stroke-width: 2; cursor: pointer; transition: all 0.2s; }
-      .unit:hover { fill: #374151; }
-      .unit.selected { fill: #3b82f6; stroke: #60a5fa; }
+      .unit { fill: #1f2937 !important; stroke: #374151; stroke-width: 2; cursor: pointer; transition: all 0.2s; pointer-events: all; }
+      .unit:hover { fill: #374151 !important; }
+      .unit.selected { fill: #3b82f6 !important; stroke: #60a5fa; }
       .unit-label { fill: #9ca3af; font-family: sans-serif; font-size: 18px; text-anchor: middle; pointer-events: none; }
     </style>
   </defs>
