@@ -41,18 +41,22 @@ export default function MapViewer({
   useEffect(() => {
     const fileName = `building-${building.toLowerCase()}-floor-${floor}.svg`;
     const svgPath = `/buildings/${fileName}`;
+    console.log('Loading SVG:', svgPath, 'with', units.length, 'units');
 
     fetch(svgPath)
       .then(res => {
         if (!res.ok) throw new Error(`Failed to load ${fileName}`);
         return res.text();
       })
-      .then(setSvgContent)
+      .then(content => {
+        console.log('SVG loaded, length:', content.length);
+        setSvgContent(content);
+      })
       .catch(error => {
         console.error('Error loading SVG:', error);
         setSvgContent(`<svg viewBox="0 0 800 600"><text x="400" y="300" text-anchor="middle" fill="#ef4444">Error loading floor plan</text></svg>`);
       });
-  }, [building, floor]);
+  }, [building, floor, units.length]);
 
   // Attach event listeners for pan/zoom
   useEffect(() => {
@@ -97,27 +101,30 @@ export default function MapViewer({
 
     const handleClick = (e: MouseEvent) => {
       const target = e.target as Element;
+      console.log('Click detected on:', target.tagName, 'classes:', target.className);
 
       // Find the closest .unit element (handles clicks on nested elements)
       const unitElement = target.closest('.unit') as SVGElement | null;
       if (!unitElement) {
-        console.log('Click not on a unit element');
+        console.log('Click not on a unit element', target);
         return;
       }
 
       e.stopPropagation();
       const svgId = unitElement.id;
 
-      console.log('Unit clicked:', svgId);
+      console.log('Unit clicked - ID:', svgId, 'Classes:', unitElement.className);
+      console.log('Total units available:', unitsRef.current.length);
+      console.log('Current floor units:', unitsRef.current.filter(u => u.floor === floor).length);
 
       // Use ref to get fresh units data
       const unit = unitsRef.current.find(u => u.svgId === svgId || u.id === svgId);
       if (unit) {
-        console.log('Found unit:', unit.unitNumber);
+        console.log('Found unit:', unit.unitNumber, 'Floor:', unit.floor);
         onUnitClickRef.current(unit);
       } else {
         console.log('No unit found for ID:', svgId);
-        console.log('Available units:', unitsRef.current.map(u => u.svgId || u.id));
+        console.log('Sample available svgIds:', unitsRef.current.slice(0, 10).map(u => u.svgId));
       }
     };
 
@@ -226,6 +233,10 @@ export default function MapViewer({
 
       {/* Additional CSS for unit states */}
       <style jsx global>{`
+        .unit {
+          cursor: pointer !important;
+          pointer-events: all !important;
+        }
         .unit.highlighted {
           stroke: #60a5fa;
           stroke-width: 3;
