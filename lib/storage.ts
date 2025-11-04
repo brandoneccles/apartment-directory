@@ -6,7 +6,7 @@
 import type { HouseholdData } from '@/types';
 
 const STORAGE_KEY = 'apartment-directory-data';
-const STORAGE_VERSION = '1.0.0';
+const STORAGE_VERSION = '1.1.0'; // Bumped to force reload with new floor data
 
 // In-memory fallback for SSR or when localStorage is unavailable
 let memoryStorage: HouseholdData | null = null;
