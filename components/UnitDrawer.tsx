@@ -7,7 +7,7 @@
 
 import { useState } from 'react';
 import { X, Plus, Trash2, Calendar, Instagram, Edit2 } from 'lucide-react';
-import type { Unit, Person, Pet } from '@/types';
+import type { Unit, Person, Pet, UnitStatus, BadgeType } from '@/types';
 import { generateId, formatDate, calculateAge } from '@/lib/utils';
 import { AVATAR_OPTIONS } from '@/types';
 import StatusBadgePicker from './StatusBadgePicker';
@@ -110,11 +110,11 @@ export default function UnitDrawer({ unit, onClose, onUpdate }: UnitDrawerProps)
     onUpdate({ ...unit, notes });
   };
 
-  const updateStatus = (status: string) => {
+  const updateStatus = (status: UnitStatus) => {
     onUpdate({ ...unit, status });
   };
 
-  const updateBadges = (badges: string[]) => {
+  const updateBadges = (badges: BadgeType[]) => {
     onUpdate({ ...unit, badges });
   };
 
