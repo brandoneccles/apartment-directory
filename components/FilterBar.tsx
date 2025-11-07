@@ -5,7 +5,7 @@
  */
 
 import { useState } from 'react';
-import { Search, X, Filter, Download, Upload } from 'lucide-react';
+import { Search, X, Filter, Download, Upload, MapPin } from 'lucide-react';
 import type { FilterState, UnitStatus, BadgeType } from '@/types';
 import { STATUS_OPTIONS, AVAILABLE_BADGES } from '@/types';
 
@@ -16,6 +16,8 @@ interface FilterBarProps {
   totalCount: number;
   onExport: () => void;
   onImport: () => void;
+  onOpenUnplaced: () => void;
+  unplacedCount: number;
 }
 
 export default function FilterBar({
@@ -25,6 +27,8 @@ export default function FilterBar({
   totalCount,
   onExport,
   onImport,
+  onOpenUnplaced,
+  unplacedCount,
 }: FilterBarProps) {
   const [showFilters, setShowFilters] = useState(false);
 
@@ -123,6 +127,19 @@ export default function FilterBar({
 
         {/* Export/Import */}
         <div className="flex gap-2 ml-auto">
+          <button
+            onClick={onOpenUnplaced}
+            className="flex items-center gap-2 px-4 py-2 bg-orange-600/20 hover:bg-orange-600/30 text-orange-400 rounded-lg border border-orange-600/50 transition-colors relative"
+            title="View unplaced entries"
+          >
+            <MapPin className="w-4 h-4" />
+            Unplaced
+            {unplacedCount > 0 && (
+              <span className="absolute -top-2 -right-2 px-1.5 py-0.5 bg-orange-600 text-white rounded-full text-xs font-bold">
+                {unplacedCount}
+              </span>
+            )}
+          </button>
           <button
             onClick={onExport}
             className="flex items-center gap-2 px-4 py-2 bg-gray-800 hover:bg-gray-700 text-gray-300 rounded-lg border border-gray-700 transition-colors"

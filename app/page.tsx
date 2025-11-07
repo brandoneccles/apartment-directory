@@ -10,6 +10,7 @@ import MapViewer from '@/components/MapViewer';
 import BuildingSelector from '@/components/BuildingSelector';
 import UnitDrawer from '@/components/UnitDrawer';
 import FilterBar from '@/components/FilterBar';
+import UnplacedEntriesDrawer from '@/components/UnplacedEntriesDrawer';
 import type { BuildingId, FloorNumber, Unit, FilterState, HouseholdData } from '@/types';
 import { loadHouseholdData, saveHouseholdData, downloadData } from '@/lib/storage';
 import { unitMatchesFilters } from '@/lib/utils';
@@ -19,6 +20,7 @@ export default function Home() {
   const [building, setBuilding] = useState<BuildingId>('G');
   const [floor, setFloor] = useState<FloorNumber>(3);
   const [selectedUnit, setSelectedUnit] = useState<Unit | null>(null);
+  const [showUnplacedDrawer, setShowUnplacedDrawer] = useState(false);
 
   // Data state
   const [data, setData] = useState<HouseholdData>({
@@ -26,6 +28,7 @@ export default function Home() {
     lastUpdated: new Date().toISOString(),
     units: [],
   });
+  const [unplacedEntries, setUnplacedEntries] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
   // Filter state
@@ -40,9 +43,13 @@ export default function Home() {
 
   // Load data on mount
   useEffect(() => {
-    loadHouseholdData()
-      .then(loadedData => {
+    Promise.all([
+      loadHouseholdData(),
+      fetch('/unplaced-entries.json').then(res => res.json()).catch(() => ({ entries: [] }))
+    ])
+      .then(([loadedData, unplacedData]) => {
         setData(loadedData);
+        setUnplacedEntries(unplacedData.entries || []);
         setIsLoading(false);
       })
       .catch(error => {
@@ -128,6 +135,8 @@ export default function Home() {
         totalCount={currentFloorUnits.length}
         onExport={handleExport}
         onImport={handleImport}
+        onOpenUnplaced={() => setShowUnplacedDrawer(true)}
+        unplacedCount={unplacedEntries.length}
       />
 
       {/* Main Content */}
@@ -160,6 +169,13 @@ export default function Home() {
           />
         )}
       </div>
+
+      {/* Unplaced Entries Drawer */}
+      <UnplacedEntriesDrawer
+        isOpen={showUnplacedDrawer}
+        entries={unplacedEntries}
+        onClose={() => setShowUnplacedDrawer(false)}
+      />
     </div>
   );
 }

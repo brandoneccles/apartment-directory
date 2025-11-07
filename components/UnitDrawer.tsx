@@ -2,11 +2,11 @@
 
 /**
  * UnitDrawer - Side panel for viewing and editing unit details
- * Redesigned with organized sections showing all household members at once
+ * Individual edit mode per item - no global save/cancel
  */
 
 import { useState } from 'react';
-import { X, Edit2, Save, XCircle, Plus, Trash2, User, Calendar, Instagram } from 'lucide-react';
+import { X, Plus, Trash2, Calendar, Instagram, Edit2 } from 'lucide-react';
 import type { Unit, Person, Pet } from '@/types';
 import { generateId, formatDate, calculateAge } from '@/lib/utils';
 import { AVATAR_OPTIONS } from '@/types';
@@ -24,17 +24,11 @@ interface EditingState {
 }
 
 export default function UnitDrawer({ unit, onClose, onUpdate }: UnitDrawerProps) {
-  const [editedUnit, setEditedUnit] = useState<Unit | null>(null);
   const [editing, setEditing] = useState<EditingState>({ type: null, id: null });
 
   if (!unit) return null;
 
-  const currentUnit = editedUnit || unit;
-
   const startEditing = (type: 'adult' | 'child' | 'pet', id: string) => {
-    if (!editedUnit) {
-      setEditedUnit({ ...unit });
-    }
     setEditing({ type, id });
   };
 
@@ -42,38 +36,18 @@ export default function UnitDrawer({ unit, onClose, onUpdate }: UnitDrawerProps)
     setEditing({ type: null, id: null });
   };
 
-  const saveChanges = () => {
-    if (editedUnit) {
-      onUpdate(editedUnit);
-    }
-    setEditedUnit(null);
-    stopEditing();
-  };
-
-  const cancelChanges = () => {
-    setEditedUnit(null);
-    stopEditing();
-  };
-
-  const updateField = <K extends keyof Unit>(field: K, value: Unit[K]) => {
-    setEditedUnit(prev => {
-      if (!prev) return { ...unit, [field]: value };
-      return { ...prev, [field]: value };
+  const updatePerson = (listType: 'adults' | 'children', updated: Person) => {
+    onUpdate({
+      ...unit,
+      [listType]: unit[listType].map(p => (p.id === updated.id ? updated : p))
     });
   };
 
-  const updatePerson = (listType: 'adults' | 'children', updated: Person) => {
-    updateField(
-      listType,
-      currentUnit[listType].map(p => (p.id === updated.id ? updated : p))
-    );
-  };
-
   const deletePerson = (listType: 'adults' | 'children', id: string) => {
-    updateField(
-      listType,
-      currentUnit[listType].filter(p => p.id !== id)
-    );
+    onUpdate({
+      ...unit,
+      [listType]: unit[listType].filter(p => p.id !== id)
+    });
     if (editing.id === id) stopEditing();
   };
 
@@ -83,7 +57,10 @@ export default function UnitDrawer({ unit, onClose, onUpdate }: UnitDrawerProps)
       name: '',
       avatar: '🧑',
     };
-    updateField('adults', [...currentUnit.adults, newAdult]);
+    onUpdate({
+      ...unit,
+      adults: [...unit.adults, newAdult]
+    });
     startEditing('adult', newAdult.id);
   };
 
@@ -94,7 +71,10 @@ export default function UnitDrawer({ unit, onClose, onUpdate }: UnitDrawerProps)
       avatar: '🧒',
       role: 'child',
     };
-    updateField('children', [...currentUnit.children, newChild]);
+    onUpdate({
+      ...unit,
+      children: [...unit.children, newChild]
+    });
     startEditing('child', newChild.id);
   };
 
@@ -104,26 +84,39 @@ export default function UnitDrawer({ unit, onClose, onUpdate }: UnitDrawerProps)
       name: '',
       type: 'dog',
     };
-    updateField('pets', [...currentUnit.pets, newPet]);
+    onUpdate({
+      ...unit,
+      pets: [...unit.pets, newPet]
+    });
     startEditing('pet', newPet.id);
   };
 
   const updatePet = (updated: Pet) => {
-    updateField(
-      'pets',
-      currentUnit.pets.map(p => (p.id === updated.id ? updated : p))
-    );
+    onUpdate({
+      ...unit,
+      pets: unit.pets.map(p => (p.id === updated.id ? updated : p))
+    });
   };
 
   const deletePet = (id: string) => {
-    updateField(
-      'pets',
-      currentUnit.pets.filter(p => p.id !== id)
-    );
+    onUpdate({
+      ...unit,
+      pets: unit.pets.filter(p => p.id !== id)
+    });
     if (editing.id === id) stopEditing();
   };
 
-  const hasChanges = editedUnit !== null;
+  const updateNotes = (notes: string) => {
+    onUpdate({ ...unit, notes });
+  };
+
+  const updateStatus = (status: string) => {
+    onUpdate({ ...unit, status });
+  };
+
+  const updateBadges = (badges: string[]) => {
+    onUpdate({ ...unit, badges });
+  };
 
   return (
     <>
@@ -139,50 +132,30 @@ export default function UnitDrawer({ unit, onClose, onUpdate }: UnitDrawerProps)
         <div className="flex items-center justify-between px-6 py-4 border-b border-gray-800 bg-gray-800/50">
           <div>
             <h2 className="text-xl font-semibold text-white">
-              Unit {currentUnit.unitNumber}
+              Unit {unit.unitNumber}
             </h2>
             <p className="text-sm text-gray-400">
-              Building {currentUnit.building} · Floor {currentUnit.floor}
+              Building {unit.building} · Floor {unit.floor}
             </p>
           </div>
-          <div className="flex items-center gap-2">
-            {hasChanges && (
-              <>
-                <button
-                  onClick={cancelChanges}
-                  className="flex items-center gap-2 px-3 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-lg transition-colors text-sm"
-                >
-                  <XCircle className="w-4 h-4" />
-                  Cancel
-                </button>
-                <button
-                  onClick={saveChanges}
-                  className="flex items-center gap-2 px-3 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg transition-colors text-sm"
-                >
-                  <Save className="w-4 h-4" />
-                  Save
-                </button>
-              </>
-            )}
-            <button
-              onClick={onClose}
-              className="p-2 hover:bg-gray-700 rounded-lg transition-colors"
-              title="Close"
-            >
-              <X className="w-5 h-5" />
-            </button>
-          </div>
+          <button
+            onClick={onClose}
+            className="p-2 hover:bg-gray-700 rounded-lg transition-colors"
+            title="Close"
+          >
+            <X className="w-5 h-5" />
+          </button>
         </div>
 
         {/* Content */}
         <div className="flex-1 overflow-y-auto p-6 space-y-6">
           {/* Status and Badges */}
           <StatusBadgePicker
-            status={currentUnit.status}
-            badges={currentUnit.badges}
-            isEditing={hasChanges}
-            onStatusChange={status => updateField('status', status)}
-            onBadgesChange={badges => updateField('badges', badges)}
+            status={unit.status}
+            badges={unit.badges}
+            isEditing={true}
+            onStatusChange={updateStatus}
+            onBadgesChange={updateBadges}
           />
 
           {/* Adults Section */}
@@ -200,12 +173,12 @@ export default function UnitDrawer({ unit, onClose, onUpdate }: UnitDrawerProps)
               </button>
             </div>
             <div className="space-y-2">
-              {currentUnit.adults.length === 0 ? (
+              {unit.adults.length === 0 ? (
                 <div className="text-sm text-gray-500 italic p-4 bg-gray-800/30 rounded-lg border border-gray-800">
                   No adults added yet
                 </div>
               ) : (
-                currentUnit.adults.map(person => (
+                unit.adults.map(person => (
                   <PersonListItem
                     key={person.id}
                     person={person}
@@ -235,12 +208,12 @@ export default function UnitDrawer({ unit, onClose, onUpdate }: UnitDrawerProps)
               </button>
             </div>
             <div className="space-y-2">
-              {currentUnit.children.length === 0 ? (
+              {unit.children.length === 0 ? (
                 <div className="text-sm text-gray-500 italic p-4 bg-gray-800/30 rounded-lg border border-gray-800">
                   No children added yet
                 </div>
               ) : (
-                currentUnit.children.map(person => (
+                unit.children.map(person => (
                   <PersonListItem
                     key={person.id}
                     person={person}
@@ -270,12 +243,12 @@ export default function UnitDrawer({ unit, onClose, onUpdate }: UnitDrawerProps)
               </button>
             </div>
             <div className="space-y-2">
-              {currentUnit.pets.length === 0 ? (
+              {unit.pets.length === 0 ? (
                 <div className="text-sm text-gray-500 italic p-4 bg-gray-800/30 rounded-lg border border-gray-800">
                   No pets added yet
                 </div>
               ) : (
-                currentUnit.pets.map(pet => (
+                unit.pets.map(pet => (
                   <PetListItem
                     key={pet.id}
                     pet={pet}
@@ -296,11 +269,8 @@ export default function UnitDrawer({ unit, onClose, onUpdate }: UnitDrawerProps)
               <span className="text-xl">📝</span> Notes
             </h3>
             <textarea
-              value={currentUnit.notes}
-              onChange={e => updateField('notes', e.target.value)}
-              onFocus={() => {
-                if (!editedUnit) setEditedUnit({ ...unit });
-              }}
+              value={unit.notes}
+              onChange={e => updateNotes(e.target.value)}
               placeholder="Add notes about this household..."
               rows={4}
               className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none text-sm"
@@ -312,7 +282,7 @@ export default function UnitDrawer({ unit, onClose, onUpdate }: UnitDrawerProps)
   );
 }
 
-// PersonListItem Component - Compact list view for a person
+// PersonListItem Component
 interface PersonListItemProps {
   person: Person;
   isEditing: boolean;
@@ -360,7 +330,7 @@ function PersonListItem({ person, isEditing, onEdit, onSave, onUpdate, onDelete 
                 >
                   {AVATAR_OPTIONS.map(option => (
                     <option key={option.value} value={option.value}>
-                      {option.value} {option.label}
+                      {option.value}
                     </option>
                   ))}
                 </select>
@@ -424,7 +394,7 @@ function PersonListItem({ person, isEditing, onEdit, onSave, onUpdate, onDelete 
     );
   }
 
-  // View mode - compact list item
+  // View mode
   return (
     <div className="flex items-center justify-between p-3 bg-gray-800/30 rounded-lg border border-gray-800 hover:border-gray-700 transition-colors group">
       <div className="flex items-center gap-3 flex-1 min-w-0">
@@ -466,7 +436,7 @@ function PersonListItem({ person, isEditing, onEdit, onSave, onUpdate, onDelete 
   );
 }
 
-// PetListItem Component - Compact list view for a pet
+// PetListItem Component
 interface PetListItemProps {
   pet: Pet;
   isEditing: boolean;
@@ -553,7 +523,7 @@ function PetListItem({ pet, isEditing, onEdit, onSave, onUpdate, onDelete }: Pet
     );
   }
 
-  // View mode - compact list item
+  // View mode
   return (
     <div className="flex items-center justify-between p-3 bg-gray-800/30 rounded-lg border border-gray-800 hover:border-gray-700 transition-colors group">
       <div className="flex items-center gap-3 flex-1 min-w-0">
