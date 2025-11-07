@@ -1,0 +1,382 @@
+{
+  "version": "1.1.0",
+  "lastUpdated": "2025-11-07T00:00:00.000Z",
+  "entries": [
+    {
+      "id": "unplaced-1",
+      "knownInfo": {
+        "floor": null,
+        "building": "G",
+        "partialUnit": null
+      },
+      "adults": [
+        {
+          "id": "unplaced-1-adult-1",
+          "name": "Roley",
+          "avatar": "👨",
+          "role": "partner"
+        },
+        {
+          "id": "unplaced-1-adult-2",
+          "name": "",
+          "avatar": "👩",
+          "role": "partner"
+        }
+      ],
+      "children": [],
+      "pets": [],
+      "notes": "Couple that loves hanging out with kids. Might be druggies - stay aware. Overall seem like good people. Can't remember the girl's name."
+    },
+    {
+      "id": "unplaced-2",
+      "knownInfo": {
+        "floor": null,
+        "building": "G",
+        "partialUnit": null
+      },
+      "adults": [
+        {
+          "id": "unplaced-2-adult-1",
+          "name": "Eli",
+          "avatar": "👨",
+          "role": "boyfriend"
+        },
+        {
+          "id": "unplaced-2-adult-2",
+          "name": "Jess",
+          "avatar": "👩",
+          "role": "girlfriend"
+        },
+        {
+          "id": "unplaced-2-adult-3",
+          "name": "",
+          "avatar": "👦",
+          "role": "Jess's son (teenager)"
+        }
+      ],
+      "children": [],
+      "pets": [],
+      "notes": "Jess has teenage son that isn't Eli's. They've only been dating a few months. Eli moved from CT/NH/New England, studying to be a nurse."
+    },
+    {
+      "id": "unplaced-3",
+      "knownInfo": {
+        "floor": null,
+        "building": "G",
+        "partialUnit": "G???"
+      },
+      "adults": [
+        {
+          "id": "unplaced-3-adult-1",
+          "name": "Carson",
+          "avatar": "👨",
+          "role": "son?"
+        },
+        {
+          "id": "unplaced-3-adult-2",
+          "name": "",
+          "avatar": "👴",
+          "role": "dad (muscular old dude)"
+        },
+        {
+          "id": "unplaced-3-adult-3",
+          "name": "",
+          "avatar": "👩",
+          "role": "dad's partner/mom?"
+        },
+        {
+          "id": "unplaced-3-adult-4",
+          "name": "",
+          "avatar": "👨",
+          "role": "friend? (bigger muscular guy)"
+        }
+      ],
+      "children": [],
+      "pets": [],
+      "notes": "Met Carson at pool with his girl and dad (muscular old dude). Consistently have group of ~6 people. Bigger muscular dude there at pool most days. Getting weird vibes."
+    },
+    {
+      "id": "unplaced-4",
+      "knownInfo": {
+        "floor": 4,
+        "building": "G",
+        "partialUnit": "G4??"
+      },
+      "adults": [
+        {
+          "id": "unplaced-4-adult-1",
+          "name": "Jonah",
+          "avatar": "👨",
+          "role": "partner"
+        },
+        {
+          "id": "unplaced-4-adult-2",
+          "name": "Serena",
+          "avatar": "👩",
+          "role": "partner?"
+        }
+      ],
+      "children": [],
+      "pets": [],
+      "notes": "Both Jonah and Carson wear bucket hats. Ran into them while bringing PS5 Pro upstairs - they were cool."
+    },
+    {
+      "id": "unplaced-5",
+      "knownInfo": {
+        "floor": 1,
+        "building": "G",
+        "partialUnit": "1??"
+      },
+      "adults": [
+        {
+          "id": "unplaced-5-adult-1",
+          "name": "Debbie",
+          "avatar": "👩",
+          "role": "resident"
+        }
+      ],
+      "children": [],
+      "pets": [
+        {
+          "id": "unplaced-5-pet-1",
+          "name": "",
+          "type": "dog"
+        }
+      ],
+      "notes": "Debbie with dog (name unknown)."
+    },
+    {
+      "id": "unplaced-6",
+      "knownInfo": {
+        "floor": null,
+        "building": "G",
+        "partialUnit": null
+      },
+      "adults": [
+        {
+          "id": "unplaced-6-adult-1",
+          "name": "Roger",
+          "avatar": "👨",
+          "role": "dad"
+        },
+        {
+          "id": "unplaced-6-adult-2",
+          "name": "",
+          "avatar": "👩",
+          "role": "mom?"
+        }
+      ],
+      "children": [
+        {
+          "id": "unplaced-6-child-1",
+          "name": "Nico",
+          "avatar": "👦",
+          "birthday": "2023-07-10",
+          "role": "son"
+        },
+        {
+          "id": "unplaced-6-child-2",
+          "name": "",
+          "avatar": "👶",
+          "birthday": "2025-07-31",
+          "role": "son #2 (due end of July)"
+        }
+      ],
+      "pets": [],
+      "notes": "Roger, partner (name unknown), and Nico (turned 2 on July 10, 2025). Son #2 due in 2 weeks (end of July)."
+    },
+    {
+      "id": "unplaced-7",
+      "knownInfo": {
+        "floor": null,
+        "building": "G",
+        "partialUnit": "G???"
+      },
+      "adults": [
+        {
+          "id": "unplaced-7-adult-1",
+          "name": "Matthew",
+          "avatar": "👨",
+          "role": "dad"
+        },
+        {
+          "id": "unplaced-7-adult-2",
+          "name": "",
+          "avatar": "👩",
+          "role": "wife?"
+        }
+      ],
+      "children": [
+        {
+          "id": "unplaced-7-child-1",
+          "name": "Kingston",
+          "avatar": "👧",
+          "role": "daughter"
+        }
+      ],
+      "pets": [],
+      "notes": "Matthew and Kingston at pool Saturday. Gave them last water balloon - she loved it!"
+    },
+    {
+      "id": "unplaced-8",
+      "knownInfo": {
+        "floor": null,
+        "building": "G",
+        "partialUnit": null
+      },
+      "adults": [
+        {
+          "id": "unplaced-8-adult-1",
+          "name": "Taylyn",
+          "avatar": "👨",
+          "role": "resident"
+        }
+      ],
+      "children": [],
+      "pets": [],
+      "notes": "Gay guy with pineapple swim suit (same one Cohen has)."
+    },
+    {
+      "id": "unplaced-9",
+      "knownInfo": {
+        "floor": null,
+        "building": "G",
+        "partialUnit": null
+      },
+      "adults": [
+        {
+          "id": "unplaced-9-adult-1",
+          "name": "Riley",
+          "avatar": "👨",
+          "role": "dad"
+        },
+        {
+          "id": "unplaced-9-adult-2",
+          "name": "",
+          "avatar": "👩",
+          "role": "girlfriend"
+        }
+      ],
+      "children": [
+        {
+          "id": "unplaced-9-child-1",
+          "name": "",
+          "avatar": "🧒"
+        },
+        {
+          "id": "unplaced-9-child-2",
+          "name": "",
+          "avatar": "🧒"
+        }
+      ],
+      "pets": [],
+      "notes": "Riley has kids around my kids' ages. Has a girl who maybe isn't mom of them all."
+    },
+    {
+      "id": "unplaced-10",
+      "knownInfo": {
+        "floor": null,
+        "building": "G",
+        "partialUnit": "G???"
+      },
+      "adults": [
+        {
+          "id": "unplaced-10-adult-1",
+          "name": "Marcos",
+          "avatar": "👨",
+          "role": "dad"
+        },
+        {
+          "id": "unplaced-10-adult-2",
+          "name": "Maria",
+          "avatar": "👩",
+          "role": "mom"
+        }
+      ],
+      "children": [
+        {
+          "id": "unplaced-10-child-1",
+          "name": "Nico",
+          "avatar": "🧒"
+        }
+      ],
+      "pets": [],
+      "notes": "Marcos, Maria, and Nico. Unit unknown."
+    },
+    {
+      "id": "unplaced-11",
+      "knownInfo": {
+        "floor": null,
+        "building": "G",
+        "partialUnit": "G???"
+      },
+      "adults": [
+        {
+          "id": "unplaced-11-adult-1",
+          "name": "Geronimo",
+          "avatar": "👨",
+          "role": "resident"
+        }
+      ],
+      "children": [],
+      "pets": [],
+      "notes": "Geronimo—unit unknown."
+    },
+    {
+      "id": "unplaced-12",
+      "knownInfo": {
+        "floor": 2,
+        "building": "G",
+        "partialUnit": "G2??"
+      },
+      "adults": [
+        {
+          "id": "unplaced-12-adult-1",
+          "name": "",
+          "avatar": "👨",
+          "role": "boyfriend/husband"
+        },
+        {
+          "id": "unplaced-12-adult-2",
+          "name": "",
+          "avatar": "👩",
+          "role": "girlfriend/wife"
+        }
+      ],
+      "children": [],
+      "pets": [],
+      "notes": "Young Black couple on floor 2. Still moving stuff in as of Oct 4. Run into them couple times."
+    },
+    {
+      "id": "unplaced-13",
+      "knownInfo": {
+        "floor": 4,
+        "building": "G",
+        "partialUnit": "G4??"
+      },
+      "adults": [
+        {
+          "id": "unplaced-13-adult-1",
+          "name": "",
+          "avatar": "👨",
+          "role": "boyfriend/husband (white)"
+        },
+        {
+          "id": "unplaced-13-adult-2",
+          "name": "",
+          "avatar": "👩",
+          "role": "girlfriend/wife (Latina?)"
+        }
+      ],
+      "children": [],
+      "pets": [
+        {
+          "id": "unplaced-13-pet-1",
+          "name": "Pedro",
+          "type": "dog"
+        }
+      ],
+      "notes": "Young couple with small brown puppy named Pedro (looks like Winston). Guy is white, girl is Latina. Run into them at gym early morning."
+    }
+  ]
+}

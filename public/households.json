@@ -449,8 +449,32 @@
       "unitNumber": "214",
       "building": "G",
       "floor": 2,
-      "adults": [],
-      "children": [],
+      "adults": [
+        {
+          "id": "person-g214-1",
+          "name": "Juan",
+          "avatar": "\ud83d\udc68",
+          "role": "dad"
+        },
+        {
+          "id": "person-g214-2",
+          "name": "Brenda",
+          "avatar": "\ud83d\udc69",
+          "role": "mom"
+        }
+      ],
+      "children": [
+        {
+          "id": "person-g214-3",
+          "name": "Juanito",
+          "avatar": "\ud83d\udc66"
+        },
+        {
+          "id": "person-g214-4",
+          "name": "Natalie",
+          "avatar": "\ud83d\udc67"
+        }
+      ],
       "pets": [],
       "notes": "",
       "status": "occupied",
@@ -1489,10 +1513,17 @@
       "unitNumber": "344",
       "building": "G",
       "floor": 3,
-      "adults": [],
+      "adults": [
+        {
+          "id": "person-g344-1",
+          "name": "Ed",
+          "avatar": "\ud83d\udc74",
+          "role": "resident"
+        }
+      ],
       "children": [],
       "pets": [],
-      "notes": "",
+      "notes": "Older gentleman who moved in July. Declined help with moving dolly.",
       "status": "occupied",
       "badges": [],
       "svgId": "g-344"
@@ -1567,7 +1598,14 @@
       "unitNumber": "352",
       "building": "G",
       "floor": 3,
-      "adults": [],
+      "adults": [
+        {
+          "id": "person-g352-1",
+          "name": "Bharat",
+          "avatar": "\ud83d\udc68",
+          "role": "resident"
+        }
+      ],
       "children": [],
       "pets": [],
       "notes": "",
@@ -1593,10 +1631,17 @@
       "unitNumber": "354",
       "building": "G",
       "floor": 3,
-      "adults": [],
+      "adults": [
+        {
+          "id": "person-g354-1",
+          "name": "Abby Brockbank",
+          "avatar": "\ud83d\udc69",
+          "role": "resident"
+        }
+      ],
       "children": [],
       "pets": [],
-      "notes": "",
+      "notes": "Lives on floor near elevator. Noticed I have kids. Left at same time and introduced ourselves.",
       "status": "occupied",
       "badges": [],
       "svgId": "g-354"
@@ -1658,7 +1703,20 @@
       "unitNumber": "359",
       "building": "G",
       "floor": 3,
-      "adults": [],
+      "adults": [
+        {
+          "id": "person-g359-1",
+          "name": "Houston",
+          "avatar": "\ud83d\udc68",
+          "role": "husband"
+        },
+        {
+          "id": "person-g359-2",
+          "name": "",
+          "avatar": "\ud83d\udc69",
+          "role": "wife"
+        }
+      ],
       "children": [],
       "pets": [],
       "notes": "",
@@ -1697,10 +1755,29 @@
       "unitNumber": "363",
       "building": "G",
       "floor": 3,
-      "adults": [],
+      "adults": [
+        {
+          "id": "person-g363-1",
+          "name": "Gabby",
+          "avatar": "\ud83d\udc69",
+          "role": "sister"
+        },
+        {
+          "id": "person-g363-2",
+          "name": "Mar",
+          "avatar": "\ud83d\udc69",
+          "role": "sister"
+        }
+      ],
       "children": [],
-      "pets": [],
-      "notes": "",
+      "pets": [
+        {
+          "id": "pet-g363-1",
+          "name": "Milo",
+          "type": "dog"
+        }
+      ],
+      "notes": "Sisters who live in corner unit. Dog Milo looks like Pedro.",
       "status": "occupied",
       "badges": [],
       "svgId": "g-363"
@@ -1710,10 +1787,48 @@
       "unitNumber": "365",
       "building": "G",
       "floor": 3,
-      "adults": [],
-      "children": [],
-      "pets": [],
-      "notes": "",
+      "adults": [
+        {
+          "id": "person-g365-1",
+          "name": "Luis",
+          "avatar": "\ud83d\udc68",
+          "role": "resident"
+        },
+        {
+          "id": "person-g365-2",
+          "name": "",
+          "avatar": "\ud83d\udc69",
+          "role": "wife"
+        },
+        {
+          "id": "person-g365-3",
+          "name": "",
+          "avatar": "\ud83d\udc74",
+          "role": "parent/in-law"
+        },
+        {
+          "id": "person-g365-4",
+          "name": "",
+          "avatar": "\ud83d\udc75",
+          "role": "parent/in-law"
+        }
+      ],
+      "children": [
+        {
+          "id": "person-g365-5",
+          "name": "",
+          "avatar": "\ud83d\udc67",
+          "role": "daughter"
+        }
+      ],
+      "pets": [
+        {
+          "id": "pet-g365-1",
+          "name": "",
+          "type": "dog"
+        }
+      ],
+      "notes": "Next door neighbor. Big dog. Lives with wife, daughter, and parents/in-laws.",
       "status": "occupied",
       "badges": [],
       "svgId": "g-365"
@@ -1775,10 +1890,40 @@
       "unitNumber": "370",
       "building": "G",
       "floor": 3,
-      "adults": [],
-      "children": [],
-      "pets": [],
-      "notes": "",
+      "adults": [
+        {
+          "id": "person-g370-1",
+          "name": "",
+          "avatar": "\ud83d\udc68",
+          "role": "dad"
+        },
+        {
+          "id": "person-g370-2",
+          "name": "",
+          "avatar": "\ud83d\udc69",
+          "role": "mom"
+        }
+      ],
+      "children": [
+        {
+          "id": "person-g370-3",
+          "name": "",
+          "avatar": "\ud83e\uddd2"
+        },
+        {
+          "id": "person-g370-4",
+          "name": "",
+          "avatar": "\ud83e\uddd2"
+        }
+      ],
+      "pets": [
+        {
+          "id": "pet-g370-1",
+          "name": "",
+          "type": "dog"
+        }
+      ],
+      "notes": "The Hansons. Dad seemed cold at first but loosened up when he saw I had kids.",
       "status": "occupied",
       "badges": [],
       "svgId": "g-370"
